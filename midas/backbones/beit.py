@@ -118,12 +118,16 @@ def beit_forward_features(self, x):
     x = self.pos_drop(x)
 
     rel_pos_bias = self.rel_pos_bias() if self.rel_pos_bias is not None else None
-    for blk in self.blocks:
+    for idx, blk in enumerate(self.blocks):
         if self.grad_checkpointing and not torch.jit.is_scripting():
             x = checkpoint(blk, x, shared_rel_pos_bias=rel_pos_bias)
         else:
             x = blk(x, resolution, shared_rel_pos_bias=rel_pos_bias)
-            print("Shape of x:", x.shape)
+        
+        if idx == len(self.blocks) - 1:
+            print(f"Shape after final Transformer block {idx}:", x.shape)
+            print("First values of x after final Transformer block:", x[0, :3, :3])
+
     x = self.norm(x)
     return x
 
