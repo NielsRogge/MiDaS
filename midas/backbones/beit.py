@@ -123,6 +123,7 @@ def beit_forward_features(self, x):
             x = checkpoint(blk, x, shared_rel_pos_bias=rel_pos_bias)
         else:
             x = blk(x, resolution, shared_rel_pos_bias=rel_pos_bias)
+            print("Shape of x:", x.shape)
     x = self.norm(x)
     return x
 
