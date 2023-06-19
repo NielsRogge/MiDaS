@@ -116,6 +116,11 @@ def forward_adapted_unflatten(pretrained, x, function_name="forward_features"):
     if layer_4.ndim == 3:
         layer_4 = unflatten(layer_4)
 
+    print("Shape of layer 1:", layer_1.shape)
+    print("Shape of layer 2:", layer_1.shape)
+    print("Shape of layer 3:", layer_1.shape)
+    print("Shape of layer 4:", layer_1.shape)
+
     layer_1 = pretrained.act_postprocess1[3: len(pretrained.act_postprocess1)](layer_1)
     layer_2 = pretrained.act_postprocess2[3: len(pretrained.act_postprocess2)](layer_2)
     layer_3 = pretrained.act_postprocess3[3: len(pretrained.act_postprocess3)](layer_3)
