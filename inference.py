@@ -59,6 +59,7 @@ def process(device, model, model_type, image, input_size, target_size, optimize,
         #     first_execution = False
 
         ## start of insert cats image
+        print("Preparing cats image...")
         import requests
         from PIL import Image
         from torchvision import transforms
