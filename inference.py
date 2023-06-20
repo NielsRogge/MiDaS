@@ -75,6 +75,9 @@ def process(device, model, model_type, image, input_size, target_size, optimize,
         ## end of insert cats image
 
         prediction = model.forward(sample)
+
+        print("Shape of prediction:", prediction.shape)
+
         prediction = (
             torch.nn.functional.interpolate(
                 prediction.unsqueeze(1),
