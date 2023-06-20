@@ -77,6 +77,7 @@ def process(device, model, model_type, image, input_size, target_size, optimize,
         prediction = model.forward(sample)
 
         print("Shape of prediction:", prediction.shape)
+        print("First values of prediction:", prediction[0, :3, :3])
 
         prediction = (
             torch.nn.functional.interpolate(
