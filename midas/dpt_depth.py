@@ -117,9 +117,13 @@ class DPT(BaseModel):
         else:
             layer_1, layer_2, layer_3, layer_4 = layers
 
-        print("Backbone layers:")
+        print("Backbone features:")
         for i in layers:
             print(i.shape)
+            if i.ndim == 4:
+                print(i[0,0,:3,:3])
+            else:
+                print(i[0,:3,:3])
 
         layer_1_rn = self.scratch.layer1_rn(layer_1)
         layer_2_rn = self.scratch.layer2_rn(layer_2)
