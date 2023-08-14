@@ -142,6 +142,9 @@ class DPT(BaseModel):
         if self.scratch.stem_transpose is not None:
             path_1 = self.scratch.stem_transpose(path_1)
 
+        print("Shape of backbone features after fusion:", path_1.shape)
+        print("First values of backbone features after fusion:", path_1[0,0,:3,:3])
+
         out = self.scratch.output_conv(path_1)
 
         return out
