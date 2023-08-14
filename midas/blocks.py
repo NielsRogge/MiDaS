@@ -382,7 +382,6 @@ class FeatureFusionBlock_custom(nn.Module):
 
     def __init__(self, features, activation, deconv=False, bn=False, expand=False, align_corners=True, size=None):
         """Init.
-
         Args:
             features (int): number of features
         """

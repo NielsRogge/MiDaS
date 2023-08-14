@@ -126,10 +126,18 @@ class DPT(BaseModel):
                 print(i[0,:3,:3])
 
         layer_1_rn = self.scratch.layer1_rn(layer_1)
+        print("RefineNet feature 1:", layer_1_rn.shape)
+        print("RefineNet feature 1:", layer_1_rn[0,0,:3,:3])
         layer_2_rn = self.scratch.layer2_rn(layer_2)
+        print("RefineNet feature 2:", layer_2_rn.shape)
+        print("RefineNet feature 2:", layer_2_rn[0,0,:3,:3])
         layer_3_rn = self.scratch.layer3_rn(layer_3)
+        print("RefineNet feature 3:", layer_3_rn.shape)
+        print("RefineNet feature 3:", layer_3_rn[0,0,:3,:3])
         if self.number_layers >= 4:
             layer_4_rn = self.scratch.layer4_rn(layer_4)
+            print("RefineNet feature 4:", layer_4_rn.shape)
+            print("RefineNet feature 4:", layer_1_rn[0,0,:3,:3])
 
         if self.number_layers == 3:
             path_3 = self.scratch.refinenet3(layer_3_rn, size=layer_2_rn.shape[2:])
