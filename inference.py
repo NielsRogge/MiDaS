@@ -69,6 +69,8 @@ def process(device, model, model_type, image, input_size, target_size, optimize,
 
         if "384" in model_type:
             image_size = 384
+        elif "256" in model_type:
+            image_size = 256
         elif "512" in model_type:
             image_size = 512
         else:
