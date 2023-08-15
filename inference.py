@@ -67,9 +67,12 @@ def process(device, model, model_type, image, input_size, target_size, optimize,
         url = "http://images.cocodataset.org/val2017/000000039769.jpg"
         image = Image.open(requests.get(url, stream=True).raw)
 
-        image_size = 384 if model_type == "dpt_swin2_base_384" else 512
-        if model_type not in ["dpt_beit_large_512", "dpt_swin2_base_384"]:
-            raise ValueError("The script currently only supports 2 model types.")
+        if "384" in model_type:
+            image_size = 384
+        elif "512" in model_type:
+            image_size = 512
+        else:
+            raise ValueError("The script currently only supports 2 different model types.")
         transforms = transforms.Compose([
             transforms.Resize((image_size, image_size)),
             transforms.ToTensor(),
