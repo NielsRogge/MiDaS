@@ -159,6 +159,8 @@ class Resize(object):
                 scale_width * width, max_val=self.__width
             )
         elif self.__resize_method == "minimal":
+            print("Scale height * height:", scale_height * height)
+            print("Scale width * width:", scale_width * width)
             new_height = self.constrain_to_multiple_of(scale_height * height)
             new_width = self.constrain_to_multiple_of(scale_width * width)
         else:
