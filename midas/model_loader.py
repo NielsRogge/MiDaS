@@ -225,6 +225,8 @@ def load_model(device, model_path, model_type="dpt_large_384", optimize=True, he
         ]
     )
 
+    print("Transform:", transform)
+
     if not "openvino" in model_type:
         model.eval()
 
