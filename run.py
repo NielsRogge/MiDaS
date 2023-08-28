@@ -150,6 +150,8 @@ def run(input_path, output_path, model_path, model_type="dpt_beit_large_512", op
             image = transform({"image": original_image_rgb})["image"]
 
             print("Shape of image:", image.shape)
+            print("First values of image:", image[0, :3, :3])
+            print("Mean of image:", image.mean())
 
             # compute
             with torch.no_grad():
