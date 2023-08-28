@@ -149,6 +149,8 @@ def run(input_path, output_path, model_path, model_type="dpt_beit_large_512", op
             original_image_rgb = utils.read_image(image_name)  # in [0, 1]
             image = transform({"image": original_image_rgb})["image"]
 
+            print("Shape of image:", image.shape)
+
             # compute
             with torch.no_grad():
                 prediction = process(device, model, model_type, image, (net_w, net_h), original_image_rgb.shape[1::-1],
