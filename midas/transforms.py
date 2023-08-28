@@ -107,6 +107,9 @@ class Resize(object):
         scale_height = self.__height / height
         scale_width = self.__width / width
 
+        print("Scale height:", scale_height)
+        print("Scale width:", scale_width)
+
         if self.__keep_aspect_ratio:
             if self.__resize_method == "lower_bound":
                 # scale such that output size is lower bound
@@ -156,6 +159,9 @@ class Resize(object):
             new_width = self.constrain_to_multiple_of(scale_width * width)
         else:
             raise ValueError(f"resize_method {self.__resize_method} not implemented")
+
+        print("New height:", new_height)
+        print("New width:", new_width)
 
         return (new_width, new_height)
 
