@@ -58,6 +58,8 @@ def process(device, model, model_type, image, input_size, target_size, optimize,
             print(f"    Input resized to {width}x{height} before entering the encoder")
             first_execution = False
 
+        print("Shape of pixel values:", sample.shape)
+
         prediction = model.forward(sample)
         prediction = (
             torch.nn.functional.interpolate(
