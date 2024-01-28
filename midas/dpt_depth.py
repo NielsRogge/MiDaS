@@ -112,6 +112,12 @@ class DPT(BaseModel):
             x.contiguous(memory_format=torch.channels_last)
 
         layers = self.forward_transformer(self.pretrained, x)
+
+        print("Backbone features:")
+        for i in layers:
+            print(i.shape)
+            print(i[0,0,:3,:3])
+
         if self.number_layers == 3:
             layer_1, layer_2, layer_3 = layers
         else:
