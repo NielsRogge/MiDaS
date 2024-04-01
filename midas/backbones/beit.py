@@ -24,6 +24,7 @@ def patch_embed_forward(self, x):
         x = x.flatten(2).transpose(1, 2)
 
     print("Shape of patch embeddings as input:", x.shape)
+    print("First values of patch embeddings:", x[0, :3, :3])
 
     x = self.norm(x)
 
