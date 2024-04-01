@@ -90,6 +90,10 @@ def forward_adapted_unflatten(pretrained, x, function_name="forward_features"):
     layer_3 = pretrained.activations["3"]
     layer_4 = pretrained.activations["4"]
 
+    print("Backbone features of shape B, L, C:")
+    print(layer_1.shape)
+    print(layer_1[0,:3,:3])
+
     layer_1 = pretrained.act_postprocess1[0:2](layer_1)
     layer_2 = pretrained.act_postprocess2[0:2](layer_2)
     layer_3 = pretrained.act_postprocess3[0:2](layer_3)
