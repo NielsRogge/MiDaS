@@ -19,6 +19,24 @@ def patch_embed_forward(self, x):
     """
     Modification of timm.models.layers.patch_embed.py: PatchEmbed.forward to support arbitrary window sizes.
     """
+    from torchvision.transforms import Compose, Resize, ToTensor, Normalize
+
+    transform = Compose([
+        Resize((384, 384)),
+        ToTensor(),
+        Normalize(mean=[0.485, 0.456, 0.406], std=[0.229, 0.224, 0.225]),
+    ])
+
+    from PIL import Image
+    import requests
+
+    url = 'http://images.cocodataset.org/val2017/000000039769.jpg'
+    image = Image.open(requests.get(url, stream=True).raw)
+
+    x = transform(image).unsqueeze(0)
+
+    print("Inserting cats image...", x.shape)
+    
     print("Shape of pixel values:", x.shape)
     print("Mean of pixel values:", x.mean())
 
