@@ -140,6 +140,8 @@ class DPT(BaseModel):
         if self.scratch.stem_transpose is not None:
             path_1 = self.scratch.stem_transpose(path_1)
 
+        print("Shape of features before relative head:", path_1.shape)
+
         out = self.scratch.output_conv(path_1)
 
         return out
