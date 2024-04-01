@@ -104,6 +104,7 @@ def attention_forward(self, x, resolution, shared_rel_pos_bias: Optional[torch.T
 
     if self.relative_position_bias_table is not None:
         window_size = tuple(np.array(resolution) // 16)
+        print("Resolution:", resolution)
         attn = attn + self._get_rel_pos_bias(window_size)
     if shared_rel_pos_bias is not None:
         attn = attn + shared_rel_pos_bias
