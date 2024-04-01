@@ -22,9 +22,10 @@ def patch_embed_forward(self, x):
     x = self.proj(x)
     if self.flatten:
         x = x.flatten(2).transpose(1, 2)
-    x = self.norm(x)
 
     print("Shape of patch embeddings as input:", x.shape)
+
+    x = self.norm(x)
 
     return x
 
