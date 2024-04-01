@@ -141,6 +141,7 @@ class DPT(BaseModel):
             path_1 = self.scratch.stem_transpose(path_1)
 
         print("Shape of features before relative head:", path_1.shape)
+        print("First values of features before relative head:", path_1[0,0,:3,:3])
 
         out = self.scratch.output_conv(path_1)
 
