@@ -19,6 +19,9 @@ def patch_embed_forward(self, x):
     """
     Modification of timm.models.layers.patch_embed.py: PatchEmbed.forward to support arbitrary window sizes.
     """
+    print("Shape of pixel values:", x.shape)
+    print("Mean of pixel values:", x.mean())
+
     x = self.proj(x)
     if self.flatten:
         x = x.flatten(2).transpose(1, 2)
